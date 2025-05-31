@@ -13,27 +13,30 @@
 </head>
 
 <body>
-    <!-- Hero -->
-    <header id="inicio" class="hero">
-        <h1>Hola, soy <span>Darwin Verastegui 👨‍💻</span></h1>
-        <p>Estudiante de Desarrollo y Análisis de Software | Enfocado en construir soluciones prácticas mientras aprendo y
-        aplico nuevas tecnologías.</p>
-    </header>
-
     <button id="menu-toggle" class="menu-toggle">☰</button>
 
     <!-- Navegación -->
     <nav class="sidebar" id="sidebar">
+        <div class="toggle-btn" id="toggleSidebar">
+            <i class="fa fa-chevron-left"></i>
+        </div>
         <ul>
-            <li><a href="#inicio" title="Inicio"><i class="fas fa-home"></i></a></li>
-            <li><a href="#sobre-mi" title="Sobre mí"><i class="fas fa-user"></i></a></li>
-            <li><a href="#proyectos" title="Proyectos"><i class="fas fa-folder-open"></i></a></li>
-            <li><a href="#tecnologias" title="Tecnologías"><i class="fas fa-code"></i></a></li>
-            <li><a href="#contacto" title="Contacto"><i class="fas fa-envelope"></i></a></li>
+            <li><a href="#inicio" title="Inicio"><i class="fas fa-home"></i><span class="nav-text">Inicio</span></a></li>
+            <li><a href="#sobre-mi" title="Sobre mí"><i class="fas fa-user"></i><span class="nav-text">Acerca de Mi</span></a></li>
+            <li><a href="#proyectos" title="Proyectos"><i class="fas fa-folder-open"></i><span class="nav-text">Proyectos</span></a></li>
+            <li><a href="#tecnologias" title="Tecnologías"><i class="fas fa-code"></i><span class="nav-text">Tecnologias</span></a></li>
+            <li><a href="#contacto" title="Contacto"><i class="fas fa-envelope"></i><span class="nav-text">Contacto</span></a></li>
         </ul>
     </nav>
 
     <main>
+        <!--Hero-->
+        <header id="inicio" class="hero">
+            <h1>Hola, soy <span>Darwin Verastegui 👨‍💻</span></h1>
+            <p>Estudiante de Desarrollo y Análisis de Software | Enfocado en construir soluciones prácticas mientras aprendo y
+            aplico nuevas tecnologías.</p>
+        </header>
+
         <!-- Acerca De -->
         <section class="sobre-mi" id="sobre-mi">
             <h2>👤 Sobre mí</h2>
@@ -94,20 +97,7 @@
         © 2025 Darwin Verastegui · Portafolio personal
     </footer>
 
-    <script>
-        const toggleButton = document.getElementById("menu-toggle");
-        const sidebar = document.getElementById("sidebar");
-      
-        toggleButton.addEventListener("click", () => {
-          sidebar.classList.toggle("active");
-        });
-
-        document.addEventListener('click', (e) => {
-            const isClickInside = sidebar.contains(e.target) || toggleButton.contains(e.target);
-            if (!isClickInside) {
-                sidebar.classList.remove('active');
-            }
-        });
+    <script src="script.js"> 
     </script>
 </body>
 </html>

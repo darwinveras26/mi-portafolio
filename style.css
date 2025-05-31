@@ -28,6 +28,21 @@ body {
     overflow-x: hidden;
 }
 
+main {
+    margin-left: 80px;
+    padding: 40px 20px;
+}
+
+body.sidebar-collapse main {
+    margin-left: 80px;
+    transition: margin-left 0.3s ease;
+}
+
+body:not(.sidebar-collapse) main {
+    margin-left: 250px;
+    transition: margin-left 0.3s ease;
+}
+
 header.hero {
     padding: 100px 20px;
     text-align: center;
@@ -55,14 +70,15 @@ header.hero {
 /* Botón hamburguesa */
 .menu-toggle {
     position: fixed;
-    top: 20px;
-    left: 20px;
+    top: 0px;
+    left: 25px;
     font-size: 28px;
     background: none;
     border: none;
     cursor: pointer;
     z-index: 1100;
     display: none;
+    color: var(--text-color);
 }
 
 /* Sidebar base */
@@ -70,40 +86,82 @@ header.hero {
     position: fixed;
     top: 0;
     left: 0;
-    width: 80px;
+    width: 250px;
     height: 100vh;
-    background-color: var(--accent-color);
-    box-shadow: 2px 0 8px rgba(0, 0, 0, 0.1);
-    padding-top: 20px;
-    z-index: 1000;
-    transition: transform 0.3s ease;
-}
-
-.sidebar ul {
-    padding: 0;
-    margin: 0;
-    list-style: none;
+    background-color: var(--section-bg);
     display: flex;
     flex-direction: column;
     align-items: center;
+    padding-top: 40px;
+    transition: width 0.3s;
+    z-index: 1000;
+}
+
+.sidebar ul {
+    list-style: none;
+    padding: 0;
+    width: 100%;
 }
 
 .sidebar li {
-    margin: 20px 0;
+    width: 100%;
+    margin: 25px 0;
+    text-align: center;
 }
 
 .sidebar a {
-    font-size: 24px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 25px;
     color: var(--text-color);
+    font-size: 22px;
+    text-decoration: none;
+    transition: color 0.3s;
 }
 
-.sidebar a:hover i {
-    color: var(--main-color);
+.nav-text {
+    font-size: 20px;
+    margin-top: 4px;
+    display: inline-block;
+    white-space: nowrap;
+    transition: opacity 0.3s;
 }
 
-main {
-    margin-left: 80px;
-    padding: 20px;
+.sidebar.collapse {
+    width: 80px;
+}
+
+.sidebar.collapse .nav-text {
+    display: none;
+}
+
+.toggle-btn {
+    position: absolute;
+    top: 20px;
+    right: -15px;
+    /* Saca la flecha un poco fuera del sidebar */
+    width: 30px;
+    height: 30px;
+    background-color: var(--accent-color);
+    border-radius: 50%;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: transform 0.3s;
+    z-index: 1001;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+}
+
+.toggle-btn.rotated i {
+    transform: rotate(180deg);
+}
+
+.sidebar a:hover {
+    color: var(--accent-color);
 }
 
 .sobre-mi {
@@ -258,6 +316,10 @@ footer {
 
     .sidebar.active {
         transform: translateX(0);
+    }
+
+    .toggle-btn {
+        display: none;
     }
 
     main {
